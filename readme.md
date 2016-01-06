@@ -1,4 +1,4 @@
-## Continue----the contination programm style
+## Continue----the continuation programm style
 
 在JS中，回调函数可以说无处不在，回调函数的编程范式其实有一个名词——CPS变换。基于这种方式，我简单的实现了一个基于正则的router dispatcher,也就是Continue的first commit,随着后续的不断修改，我发现connect也是基于这么一种方式来实现的，受此影响，我参照connext将部分功能进行完善，同时将如下的中间件进行重写。
 
