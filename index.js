@@ -1,9 +1,14 @@
 var http = require('http'),
     debug = require('debug')('myapp'),
-    app = require('./lib/application')();
+    app = require('./lib/application')(),
+    staticServe = require('./lib/middleware/static-serve'),
+    favicon = require('./lib/middleware/favicon'),
+    cookieParser = require('./lib/middleware/cookieParser');
 
 
-app.use('/hello', function(req, res, next) {    
+app.use(staticServe('public'))
+	.use(cookieParser('yangshengfu'));
+app.use('/hello', function(req, res, next) { 
     res.writeHead(200, {
         "Content-Type": "text/plain"
     });
@@ -17,8 +22,6 @@ app.use('/hello', function(req, res, next) {
 })
 
 app.use('/', function(req, res) {
-
-    console.log('oh oh!');
     res.writeHead(200, {
         "Content-Type": "text/plain"
     });
